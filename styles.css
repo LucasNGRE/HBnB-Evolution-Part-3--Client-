@@ -1,0 +1,84 @@
+/* Styles Généraux */
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Assure que le corps prend au moins la hauteur de la fenêtre */
+}
+
+/* Styles de l'En-tête */
+header {
+    background-color: #ffa033; /* Couleur de fond orange pour l'en-tête */
+    color: #fff;
+    padding: 1rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between; /* Aligne les éléments aux extrémités */
+    align-items: center;           /* Centre les éléments verticalement */
+}
+
+nav .logo {
+    height: 40px; /* Ajuste la taille du logo */
+}
+
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 1rem; /* Espacement entre les liens */
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Contenu Principal */
+main {
+    flex: 1; /* Permet au contenu principal de s'étendre et de pousser le pied de page vers le bas */
+    padding: 1rem;
+}
+
+/* Section de Filtrage */
+#filter {
+    margin-bottom: 1rem;
+    text-align: center; /* Centre le texte dans la section de filtrage */
+}
+
+#country-filter {
+    padding: 0.5rem;
+}
+
+/* Section de Liste des Lieux */
+#places-list {
+    /* Ajoutez des styles pour la liste des lieux si nécessaire */
+}
+
+/* Styles des Cartes de Lieu */
+.place-card {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff; /* Couleur de fond blanche pour les cartes de lieu */
+}
+
+/* Styles des Cartes de Critiques */
+.review-card {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff; /* Couleur de fond blanche pour les cartes de critiques */
+}
+
+/* Styles du Pied de Page */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center; /* Centre le texte horizontalement */
+    padding: 1rem;
+}
