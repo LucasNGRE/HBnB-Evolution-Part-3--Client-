@@ -1,35 +1,35 @@
 /* Styles Généraux */
 body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Assure que le corps prend au moins la hauteur de la fenêtre */
+    min-height: 100vh;
+    background-color: #f4f4f4;
 }
 
 /* Styles de l'En-tête */
 header {
-    background-color: #ffa033; /* Couleur de fond orange pour l'en-tête */
+    background: linear-gradient(135deg, #845EC2, #D65DB1, #FF6F91, #FF9671);
     color: #fff;
     padding: 1rem;
 }
 
 nav {
     display: flex;
-    justify-content: space-between; /* Aligne les éléments aux extrémités */
-    align-items: center;           /* Centre les éléments verticalement */
+    justify-content: space-between;
+    align-items: center;
 }
 
 nav .logo {
-    height: 40px; /* Ajuste la taille du logo */
+    height: 40px;
 }
-
 
 nav a {
     color: #fff;
     text-decoration: none;
-    margin-left: 1rem; /* Espacement entre les liens */
+    margin-left: 1rem;
 }
 
 nav a:hover {
@@ -38,32 +38,77 @@ nav a:hover {
 
 /* Contenu Principal */
 main {
-    flex: 1; /* Permet au contenu principal de s'étendre et de pousser le pied de page vers le bas */
+    flex: 1;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Section de Filtrage */
 #filter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 1rem;
-    text-align: center; /* Centre le texte dans la section de filtrage */
+    text-align: center;
+}
+
+#filter label {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    color: #333;
 }
 
 #country-filter {
-    padding: 0.5rem;
+    padding: 0.5em;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    max-width: 100%;
 }
 
 /* Section de Liste des Lieux */
 #places-list {
-    /* Ajoutez des styles pour la liste des lieux si nécessaire */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    justify-content: center;
+    width: 100%; /* Assure que les cartes prennent toute la largeur disponible */
 }
 
 /* Styles des Cartes de Lieu */
-.place-card {
-    margin: 20px;
-    padding: 10px;
+.place {
+    background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: #fff; /* Couleur de fond blanche pour les cartes de lieu */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin: 10px;
+}
+
+.place:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.place h2 {
+    background: linear-gradient(135deg, #FF6F91, #FF9671);
+    color: #fff;
+    font-size: 1.25em;
+    margin: 0;
+    padding: 1em;
+    text-align: center;
+}
+
+.place p {
+    margin: 1em;
+    color: #333;
 }
 
 /* Styles des Cartes de Critiques */
@@ -72,13 +117,88 @@ main {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 10px;
-    background-color: #fff; /* Couleur de fond blanche pour les cartes de critiques */
+    background-color: #fff;
+}
+
+/* Styles du Formulaire de Connexion */
+#login-form {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#login-form h2 {
+    margin-bottom: 1rem;
+    color: #333;
+    font-size: 28px;
+    font-weight: 700;
+    border-bottom: 2px solid #FF6F91;
+    padding-bottom: 10px;
+}
+
+#login-form label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    color: #555;
+}
+
+#login-form input[type="email"],
+#login-form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#login-form input[type="email"]:focus,
+#login-form input[type="password"]:focus {
+    border-color: #FF6F91;
+    box-shadow: 0 0 5px rgba(255, 111, 145, 0.5);
+    outline: none;
+}
+
+#login-form button {
+    background-color: #FF6F91;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#login-form button:hover {
+    background-color: #FF9671;
+    transform: translateY(-2px);
+}
+
+#login-form button:active {
+    background-color: #FF6F91;
+    transform: translateY(0);
+}
+
+/* Styles du message d'erreur */
+#error-message {
+    text-align: center;
+    margin-top: 10px;
+    color: red;
 }
 
 /* Styles du Pied de Page */
 footer {
     background-color: #333;
     color: #fff;
-    text-align: center; /* Centre le texte horizontalement */
+    text-align: center;
     padding: 1rem;
 }
