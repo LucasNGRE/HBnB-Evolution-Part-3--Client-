@@ -17,10 +17,17 @@ app.use(cors());
 
 // Liste simulée des lieux
 const places = [
-    { name: 'Eiffel Tower', description: 'Iconic Parisian landmark.', location: 'Paris', country: 'France' },
-    { name: 'Statue of Liberty', description: 'Famous statue in New York City.', location: 'New York', country: 'USA' },
-    { name: 'Colosseum', description: 'Ancient Roman gladiatorial arena.', location: 'Rome', country: 'Italy' },
+    { id: 1, name: 'Eiffel Tower', description: 'Iconic Parisian landmark.', location: 'Paris', country: 'France', images: ['eiffel-tower.jpg'] },
+    { id: 2, name: 'Statue of Liberty', description: 'Famous statue in New York City.', location: 'New York', country: 'USA', images: ['statue-of-liberty.jpg'] },
+    { id: 3, name: 'Colosseum', description: 'Ancient Roman gladiatorial arena.', location: 'Rome', country: 'Italy', images: ['colosseum.jpg'] },
     // Ajoutez d'autres lieux ici
+];
+
+// Liste simulée des critiques
+const reviews = [
+    { placeId: 1, review: 'Amazing view of Paris!' },
+    { placeId: 2, review: 'A must-see landmark in NYC.' },
+    // Ajoutez d'autres critiques ici
 ];
 
 // Middleware pour vérifier les jetons JWT
@@ -52,6 +59,33 @@ app.post('/login', (req, res) => {
 // Endpoint pour obtenir la liste des lieux (protégé par JWT)
 app.get('/places', authenticateToken, (req, res) => {
     res.json(places);
+});
+
+// Endpoint pour obtenir les détails d'un lieu spécifique
+app.get('/places/:id', (req, res) => {
+    const placeId = parseInt(req.params.id, 10);
+    const place = places.find(p => p.id === placeId);
+
+    if (place) {
+        res.json(place);
+    } else {
+        res.status(404).json({ message: 'Place not found' });
+    }
+});
+
+// Endpoint pour ajouter une critique (protégé par JWT)
+app.post('/places/:id/reviews', authenticateToken, (req, res) => {
+    const placeId = parseInt(req.params.id, 10);
+    const { review } = req.body;
+
+    const place = places.find(p => p.id === placeId);
+
+    if (place) {
+        reviews.push({ placeId, review });
+        res.status(201).json({ message: 'Review added successfully' });
+    } else {
+        res.status(404).json({ message: 'Place not found' });
+    }
 });
 
 app.listen(port, () => {
