@@ -129,7 +129,7 @@ function displayPlaces(places) {
                 <p><strong>Description:</strong> ${place.description}</p>
                 <p><strong>Location:</strong> ${place.location}</p>
                 <p><strong>Country:</strong> ${place.country}</p>
-                <a href="place.html?place_id=${place.id}">Voir Détails</a>
+                <a href="place.html?place_id=${place.id}">Add a review</a>
             `;
             placeDiv.dataset.country = place.country;
 
